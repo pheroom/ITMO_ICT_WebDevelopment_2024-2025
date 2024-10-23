@@ -70,6 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "django_project_akulov.wsgi.application"
 
+AUTH_USER_MODEL = 'project_first_app.Owner'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

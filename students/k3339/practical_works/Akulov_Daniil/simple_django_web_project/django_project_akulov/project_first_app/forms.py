@@ -5,9 +5,14 @@ class OwnerForm(forms.ModelForm):
     class Meta:
         model = Owner
         fields = [
+            "username",
+            "password",
             "last_name",
             "first_name",
-            "birth_date"
+            "birth_date",
+            "passport",
+            "nationality",
+            "address"
         ]
 
 class CarForm(forms.ModelForm):

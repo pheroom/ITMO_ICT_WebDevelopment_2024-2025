@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../3/">
+        <link rel="prev" href="../1/">
       
       
-        <link rel="next" href="../5/">
+        <link rel="next" href="../3/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Task 4 - WEB-programming</title>
+        <title>Task 2 - WEB-programming</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4" class="md-skip">
+        <a href="#2" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task 4
+              Task 2
             
           </span>
         </div>
@@ -266,48 +266,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Task 2
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Task 3
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -324,7 +282,7 @@
           
   
   <span class="md-ellipsis">
-    Task 4
+    Task 2
   </span>
   
 
@@ -335,7 +293,7 @@
         
   
   <span class="md-ellipsis">
-    Task 4
+    Task 2
   </span>
   
 
@@ -399,11 +357,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Task 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../laboratory_work_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main
   </span>
   
 
@@ -488,9 +551,11 @@
                   
 
 
-<h1 id="4">Задание 4</h1>
+<h1 id="2">Задание 2</h1>
 <h2 id="_1">Описание</h2>
-<p>Реализовать двухпользовательский или многопользовательский чат.</p>
+<p>Реализовать клиентскую и серверную часть приложения. Клиент запрашивает у сервера выполнение математической операции, параметры, которые вводятся с клавиатуры. Сервер обрабатывает полученные данные и возвращает результат клиенту. Варианты:</p>
+<p>a. Теорема Пифагора</p>
+<p>Реализовать с помощью протокола TCP</p>
 <h2 id="_2">Стек</h2>
 <ul>
 <li>Язык: JavaScript</li>
@@ -502,22 +567,15 @@
 <li>Сервер:
     <code>node server.js</code></li>
 <li>Клиент:
-    <code>node client.js</code></li>
+    <code>node client.js [длина a] [длина b]</code></li>
 </ul>
-<p>Команды на клиенте:</p>
-<ul>
-<li>Отправить сообщение 
-   <code>[текст сообщения]</code></li>
-<li>Вывести список доступных команд
-   <code>/help</code></li>
-<li>Закрыть соединение
-   <code>/exit</code></li>
-<li>Запустить режим смены имены
-   <code>/rename</code></li>
-<li>Выбор нового имени (в режиме смены имены)
-   <code>[новое имя пользователи или "/" для отмены]</code></li>
-</ul>
-<p>Есть поддержка мультичата. Сервер логирует сообщения и действия пользователей (подключение, отключение, смену имени)</p>
+<p>При запуске клиента отправляется запрос на сервер с текстом в json формате, сервер его обрабатывает и отправляет в ответ сообщение содержащее длину гипотенузы в строковом формате.</p>
+<p>Формат запроса:</p>
+<pre><code class="language-json">{
+   &quot;a&quot;: [длина a],
+   &quot;b&quot;: [длина b]
+}
+</code></pre>
 
 
 

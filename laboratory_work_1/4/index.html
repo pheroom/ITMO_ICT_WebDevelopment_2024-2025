@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../4/">
+        <link rel="prev" href="../3/">
       
+      
+        <link rel="next" href="../5/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Task 5 - WEB-programming</title>
+        <title>Task 4 - WEB-programming</title>
       
     
     
@@ -60,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5" class="md-skip">
+        <a href="#4" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task 5
+              Task 4
             
           </span>
         </div>
@@ -306,27 +308,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../4/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Task 4
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -343,7 +324,7 @@
           
   
   <span class="md-ellipsis">
-    Task 5
+    Task 4
   </span>
   
 
@@ -354,7 +335,7 @@
         
   
   <span class="md-ellipsis">
-    Task 5
+    Task 4
   </span>
   
 
@@ -406,6 +387,90 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../laboratory_work_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -486,11 +551,9 @@
                   
 
 
-<h1 id="5">Задание 5</h1>
+<h1 id="4">Задание 4</h1>
 <h2 id="_1">Описание</h2>
-<p>Необходимо написать простой web-сервер для обработки GET и POST http запросов, который может: 
-- Принять и записать информацию о дисциплине и оценке по дисциплине.
-- Отдать информацию обо всех оценах по дсициплине в виде html-страницы.</p>
+<p>Реализовать двухпользовательский или многопользовательский чат.</p>
 <h2 id="_2">Стек</h2>
 <ul>
 <li>Язык: JavaScript</li>
@@ -500,16 +563,24 @@
 <h2 id="_3">Как запускать</h2>
 <ul>
 <li>Сервер:
-   <code>node server.js</code></li>
+    <code>node server.js</code></li>
+<li>Клиент:
+    <code>node client.js</code></li>
 </ul>
-<p>Сервер обрабатывает GET-запрос по адресу <em>/discipline</em> с search-параметром <code>discipline=[название дисциплины]</code> и возвращает html-страницу со списком оценок по данной дисциплине, POST-запрос по адресу <em>/discipline</em> в формате json используется для добавления новой оценки.</p>
-<p>Формат запроса для добавления оценки:</p>
-<pre><code class="language-json">{
-   &quot;discipline&quot;: [название дисциплины],
-   &quot;name&quot;: [имя],
-   &quot;grade&quot;: [оценка]
-}
-</code></pre>
+<p>Команды на клиенте:</p>
+<ul>
+<li>Отправить сообщение 
+   <code>[текст сообщения]</code></li>
+<li>Вывести список доступных команд
+   <code>/help</code></li>
+<li>Закрыть соединение
+   <code>/exit</code></li>
+<li>Запустить режим смены имены
+   <code>/rename</code></li>
+<li>Выбор нового имени (в режиме смены имены)
+   <code>[новое имя пользователи или "/" для отмены]</code></li>
+</ul>
+<p>Есть поддержка мультичата. Сервер логирует сообщения и действия пользователей (подключение, отключение, смену имени)</p>
 
 
 

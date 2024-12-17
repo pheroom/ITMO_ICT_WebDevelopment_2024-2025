@@ -12,6 +12,8 @@
         <link rel="prev" href="../laboratory_work_1/5/">
       
       
+        <link rel="next" href="../laboratory_work_3/lab/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
@@ -453,12 +455,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       Запустить локально
@@ -490,11 +487,100 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laboratory_work_3/lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laboratory_work_3/pw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PW
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -550,12 +636,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       Запустить локально
@@ -587,6 +668,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
@@ -602,6 +688,8 @@
                 
                   
 
+
+  <h1>Main</h1>
 
 <h2 id="2">Лабораторная работа 2: Список отелей</h2>
 <h3 id="_1">Задание</h3>
@@ -658,11 +746,36 @@ class Review(models.Model):
 <li>В клиентской части должна формироваться таблица, отображающая
   постояльцев отеля за последний месяц.</li>
 </ul>
-<h1 id="_2">Запустить локально</h1>
-<h2 id="_3">Установить зависимости</h2>
+<p>Эндпоинты:</p>
+<pre><code class="language-python">urlpatterns = [
+    path('login/', views.login, name='login'),
+    path('registration/', views.registration, name='registration'),
+    path(&quot;logout/&quot;, LogoutView.as_view(next_page='login'), name=&quot;logout&quot;),
+    path('hotels/', views.hotels, name='hotels'),
+    path('hotels/create', views.hotel_create, name='hotel-create'),
+    path('hotels/update/&lt;int:hotel_id&gt;', views.HotelUpdateView.as_view(), name='hotel-update'),
+    path('hotels/delete/&lt;int:hotel_id&gt;', views.HotelDeleteView.as_view(), name='hotel-delete'),
+    path('&lt;int:hotel_id&gt;/rooms/', views.hotel_rooms, name='hotel-rooms'),
+    path('&lt;int:hotel_id&gt;/rooms/create', views.room_create, name='room-create'),
+    path('rooms/update/&lt;int:room_id&gt;', views.RoomUpdateView.as_view(), name='room-update'),
+    path('rooms/delete/&lt;int:room_id&gt;', views.RoomDeleteView.as_view(), name='room-delete'),
+    path('rooms/', views.rooms, name='rooms'),
+    path('bookings/', views.bookings, name='bookings'),
+    path('&lt;int:hotel_id&gt;/bookings/', views.hotel_bookings, name='hotel-bookings'),
+    path('&lt;int:hotel_id&gt;/bookings/admin-create', views.booking_admin_create, name='booking-admin-create'),
+    path('&lt;int:room_id&gt;/bookings/create', views.booking_create, name='booking-create'),
+    path('bookings/update/&lt;int:booking_id&gt;', views.BookingUpdateView.as_view(), name='booking-update'),
+    path('bookings/delete/&lt;int:booking_id&gt;', views.BookingDeleteView.as_view(), name='booking-delete'),
+    path('users/last-month', views.users_last_month, name='users-last-month'),
+    path('reviews/&lt;int:room_id&gt;', views.reviews, name='reviews'),
+    path('reviews/&lt;int:room_id&gt;/create', views.review_create, name='review-create'),
+]
+</code></pre>
+<h3 id="_2">Запустить локально</h3>
+<h4 id="_3">Установить зависимости</h4>
 <pre><code class="language-bash">pip install django, psycopg2-binary
 </code></pre>
-<h2 id="_4">Запустить сервер</h2>
+<h4 id="_4">Запустить сервер</h4>
 <pre><code class="language-bash">python manage.py runserver
 </code></pre>
 

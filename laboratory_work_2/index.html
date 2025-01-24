@@ -771,6 +771,29 @@ class Review(models.Model):
     path('reviews/&lt;int:room_id&gt;/create', views.review_create, name='review-create'),
 ]
 </code></pre>
+<p>Главный экран со списком комнат:
+<img alt="1" src="images/1.png" /></p>
+<p>Экран со списком резервирований:
+<img alt="2" src="images/2.png" /></p>
+<p>Пример кода вьюшки (список резервирований):</p>
+<pre><code class="language-python">@login_required(login_url='/login/')
+def hotel_bookings(request, hotel_id):
+    try:
+        hotel = Hotel.objects.get(id=hotel_id)
+    except Hotel.DoesNotExist:
+        raise Http404(&quot;Poll does not exist&quot;)
+    users = request.user
+    if(hotel.owner != users):
+        return render(request, 'error.html',
+                      {&quot;message&quot;: f'Извините, но у вас нет доступа для просмотра бронирований комнат Отеля &quot;{hotel.name}&quot;.'})
+    bookings = []
+    rooms = hotel.rooms.all()
+    for room in rooms:
+        for booking in room.bookings.all():
+            bookings.append(booking)
+    bookings.sort(key=lambda booking: booking.check_in, reverse=True)
+    return render(request, &quot;hotel_bookings.html&quot;, {&quot;bookings&quot;: bookings, 'hotel': hotel})
+</code></pre>
 <h3 id="_2">Запустить локально</h3>
 <h4 id="_3">Установить зависимости</h4>
 <pre><code class="language-bash">pip install django, psycopg2-binary

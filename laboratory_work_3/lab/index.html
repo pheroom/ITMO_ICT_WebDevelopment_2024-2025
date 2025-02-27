@@ -593,6 +593,69 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../laboratory_work_4/lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -701,6 +764,71 @@
 <img alt="swagger img 2" src="../images/2.png" />
 <img alt="swagger img 3" src="../images/3.png" />
 <img alt="swagger img 4" src="../images/4.png" /></p>
+<p>Код main скрипта:</p>
+<pre><code class="language-typescript">async function start(){
+    const PORT = process.env.PORT || 5000
+    const app = await NestFactory.create(AppModule)
+
+    app.enableCors()
+
+    const config = new DocumentBuilder()
+        .setTitle(&quot;Sound Sphere API&quot;)
+        .setVersion('1.0.0')
+        .setDescription('API built with the Node/Nest and PostgreSQL. Supports jwt authentication system, manage albums, tracks and playlists.')
+        .setContact('Source code', 'https://github.com/pheroom/sound-sphere-backend', '')
+        .addBearerAuth()
+        .build()
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('/api/docs', app, document);
+
+    // app.setGlobalPrefix('api')
+    app.useGlobalPipes(new ValidationPipe({
+        exceptionFactory: (errors) =&gt; {
+            const result = errors
+                .map((error) =&gt; error.constraints[Object.keys(error.constraints)[0]]).join('. ')
+            return new BadRequestException(result);
+        },
+        stopAtFirstError: true,
+    }));
+
+    await app.listen(PORT, () =&gt; console.log(`Listening on ${PORT}`))
+}
+
+start()
+</code></pre>
+<p>Код App модуля:</p>
+<pre><code class="language-typescript">@Module({
+    controllers: [],
+    providers: [],
+    imports: [
+        ConfigModule.forRoot({
+            envFilePath: `.${process.env.NODE_ENV}.env`,
+        }),
+        ServeStaticModule.forRoot({
+            rootPath: path.resolve(__dirname, '..', 'static')
+        }),
+        SequelizeModule.forRoot({
+            dialect: 'postgres',
+            host: process.env.POSTGRES_HOST,
+            port: Number(process.env.POSTGRES_PORT),
+            username: process.env.POSTGRES_USER,
+            password: process.env.POSTGRES_PASSWORD,
+            database: process.env.POSTGRES_DB,
+            dialectOptions: process.env.POSTGRES_SLL_REQUIRED ? {ssl: {require: true}} : {},
+            autoLoadModels: true,
+            models: [User, Artist, UserBlockedArtists, Album, AlbumArtists, UserFavouriteAlbums, Track, TrackArtists,
+                UserFavouriteTracks, Playlist, UserFavouritePlaylists, PlaylistTracks]
+        }),
+        UsersModule,
+        AuthModule,
+        ArtistsModule,
+        FilesModule,
+        AlbumsModule,
+        TracksModule,
+        PlaylistsModule,
+    ],
+})
+</code></pre>
 <h3 id="_2">Запустить локально</h3>
 <h4 id="_3">Установить зависимости</h4>
 <pre><code class="language-bash">npm i 
